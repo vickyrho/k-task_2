@@ -1,0 +1,44 @@
+<h1 style="text-align: center ; font-family: 'Raleway', sans-serif ; color: #dddddd ;">FINANCE APP</h1>
+<div class="container">
+  <input type="radio" name="tab" id="signin" checked="checked"/>
+  <input type="radio" name="tab" id="register"/>
+  <div class="pages">
+    <div class="page">
+      <div class="input">
+        <div class="title"> USERNAME</div>
+        <input class="text" type="text" placeholder="" [(ngModel)]="username" />
+      </div>
+      <div class="input">
+        <div class="title"> PASSWORD</div>
+        <input class="text" type="password" placeholder="" [(ngModel)]="password"/>
+      </div>
+      <div class="input">
+        <input type="submit" value="ENTER" (click)="login()" />
+      </div>
+    </div>
+    <div class="page signup">
+      <div class="input">
+        <div class="title"> NAME</div>
+        <input class="text" type="text" placeholder=""/>
+      </div>
+      <div class="input">
+        <div class="title"> EMAIL</div>
+        <input class="text" type="password" placeholder=""/>
+      </div>
+      <div class="input">
+        <input type="submit" value="SIGN ME UP!"/>
+      </div>
+    </div>
+  </div>
+  <div class="tabs">
+    <label class="tab" for="signin">
+      <div class="text">Sign In</div>
+    </label>
+    <label class="tab" for="register">
+      <div class="text">Register</div>
+    </label>
+  </div>
+</div>
+
+<div id="snackbar">{{str}}</div>
+<toaster-container [toasterconfig]="config"></toaster-container>

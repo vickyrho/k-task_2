@@ -1,0 +1,62 @@
+<header role="banner">
+  <h1>Control Panel</h1>
+  <ul class="utilities">
+    <li class="logout warn" (click)="logOut()"><a>Log Out</a></li>
+  </ul>
+</header>
+
+<nav role='navigation'>
+  <ul class="main">
+    <li class="dashboard" (click)="changeScope(true)"><a>Dashboard</a></li>
+    <li class="edit" (click)="changeScope(false)"><a>ALL BILLS</a></li>
+  </ul>
+</nav>
+
+<main role="main">
+  <section class="panel important" *ngIf="isFirstPage">
+    <h2>Finance Admin</h2>
+    <ul>
+      <li>Controls all budgets</li>
+    </ul>
+  </section>
+
+  <section class="panel important" *ngIf="isFirstPage">
+    <h2>New Bill</h2>
+    <form>
+      <div class="twothirds">
+        Member:<br/>
+        <input type="text" name="title" size="40" [(ngModel)]="biller" /><br/><br/>
+        Purpose:<input type="text" name="title" size="40" [(ngModel)]="purpose" /><br/><br/>
+        amount:<input type="text" name="title" size="40" [(ngModel)]="amount" /><br/><br/>
+        Description:<br/>
+        <textarea name="newstext" rows="15" cols="67"></textarea><br/>
+      </div>
+
+
+
+    </form>
+
+
+  </section>
+  <section class="panel important" *ngIf="isFirstPage"><br>
+    <div>
+      <input type="file" (change)="onFileSelected($event)" style="margin-bottom:10px ;height: 40px ; background-color: #f6f0b9 ;padding-left: 15px ; padding-top: 15px" > &nbsp;&nbsp;&nbsp;
+      <button (click)="onUpLoad()" style="width: 100px ;height: 50px ;background-color: #21ccbb ; color: white ; font-size: large">Upload</button>
+    </div>
+  </section>
+
+  <section class="panel important" *ngIf="isSecondPage" style="transition: 0.5s;">
+    <h1>BILLS</h1>
+    <button (click)="getAllBills()" style="background-color: #21ccbb; color: white">Get ALL BILLS</button><br>
+
+    <div id="menuBar" *ngFor = 'let item of selectedFIle'>
+      <div class="box" (click)="showModel(item)" style="width: 250px"><p>{{ item.biller }}&nbsp;{{ item.purpose }}&nbsp;{{ item.amount }}&nbsp;{{ item.status ? "success" : "declined" }}</p></div>
+      <button style="background-color: red ; color: white ; height: 30px ; width: 30px" (click)="changeStatus(item)">X</button>
+    </div>
+
+
+  </section>
+
+
+
+</main>
